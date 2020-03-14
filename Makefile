@@ -43,6 +43,10 @@ reviewdog:
 build: fmtcheck vet
 	go build -o $(NAME) .
 
+.PHONY: build-linux
+build-linux: fmtcheck vet
+	GOOS=linux GOARCH=amd64 go build -o $(NAME) .
+
 .PHONY: install
 install: build
 	mv $(NAME) ~/.terraform.d/plugins/
