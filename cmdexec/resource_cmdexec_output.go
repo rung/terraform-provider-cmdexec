@@ -24,6 +24,7 @@ func ResourceCmdOutput() *schema.Resource {
 			"rc": {
 				Type:     schema.TypeInt,
 				Optional: true,
+				Default:  999,
 			},
 			"output": {
 				Type:     schema.TypeString,

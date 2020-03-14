@@ -28,6 +28,7 @@ mod:
 
 .PHONY: test
 test: fmtcheck
+	TF_ACC=1 go test ./... -v
 	go test -v -race ./...
 
 .PHONY: vet
