@@ -1,4 +1,5 @@
 REVIEWDOG_ARG ?= -diff="git diff master"
+NAME = terraform-provider-cmdexec
 
 LINT_TOOLS=\
 	github.com/reviewdog/reviewdog/cmd/reviewdog \
@@ -39,4 +40,8 @@ reviewdog:
 
 .PHONY: build
 build: fmtcheck vet
-	go build .
+	go build -o $(NAME) .
+
+.PHONY: install
+install: build
+	mv $(NAME) ~/.terraform.d/plugins/
