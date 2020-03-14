@@ -37,3 +37,8 @@ resource "cmdexec_output" "sample" {
   output = data.cmdexec_execute.sample.output
 }
 ```
+
+To build the provider for Linux, please run `make build-linux`
+```sh
+make build-linux
+```
