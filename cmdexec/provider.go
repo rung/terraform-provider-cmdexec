@@ -8,6 +8,9 @@ import (
 // Provider returns a terraform.ResourceProvider.
 func Provider() terraform.ResourceProvider {
 	provider := &schema.Provider{
+		ResourcesMap: map[string]*schema.Resource{
+			"cmdexec_output": ResourceCmdOutput(),
+		},
 		DataSourcesMap: map[string]*schema.Resource{
 			"cmdexec_execute": dataSourceCmdExecExecute(),
 		},

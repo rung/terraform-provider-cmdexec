@@ -5,7 +5,6 @@ import (
 	"errors"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"os/exec"
-	"strings"
 	"time"
 )
 
@@ -36,17 +35,23 @@ func dataSourceCmdExecExecute() *schema.Resource {
 }
 
 func dataSourceCmdExecExecuteRead(d *schema.ResourceData, meta interface{}) error {
-	cmd := d.Get("command").(string)
+	sh, err := exec.LookPath("sh")
+	if err != nil {
+		return errors.New("sh is not found")
+	}
+
+	command := d.Get("command").(string)
 	timeout := d.Get("timeout").(int)
 
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*time.Duration(timeout))
 	defer cancel()
 
-	out, err := exec.CommandContext(ctx, strings.Split(cmd, " ")[0], strings.Split(cmd, " ")[1:]...).Output()
-	if err != nil {
-		return errors.New("it failed to execute command")
-	}
+	cmd := exec.CommandContext(ctx, sh, "-c", command)
+	output, _ := cmd.CombinedOutput()
 
-	d.Set("output", string(out))
+	d.Set("rc", cmd.ProcessState.ExitCode())
+	d.Set("output", string(output))
+	d.SetId("0")
+
 	return nil
 }
