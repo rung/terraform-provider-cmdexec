@@ -3,8 +3,9 @@
 What is this
 ------------
 
-`terraform-provider-cmdexec` is created for command execution on Terraform.
-Terraform has `local-exec` provisioner by default. but provisioner is executed when `terraform apply`. On the other hand, `terraform-provider-cmdexec` execute a command when `terraform plan`.
+`terraform-provider-cmdexec` provides command execution from Terraform Configuration.  
+Terraform has `local-exec` provisioner by default. but provisioner is executed when `terraform apply`. On the other hand, `terraform-provider-cmdexec` execute a command when `terraform plan`.  
+This provider was originally created for penetration testing of CI/CD pipeline.
 
 Requirements
 ------------
