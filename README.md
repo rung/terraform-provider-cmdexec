@@ -16,13 +16,14 @@ make install
 ```
 
 To use the provider, please write datasource.
+value of `command` is executed.
 ```tf
 data "cmdexec_execute" "sample" {
   command = "echo test"
 }
 ```
 
-To get output of command when `terraform plan`, please write resource.
+To get output of the executed command when `terraform plan`, please write resource.
 ```tf
 resource "cmdexec_output" "sample" {
   rc     = data.cmdexec_execute.sample.rc
