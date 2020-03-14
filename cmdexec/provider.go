@@ -9,7 +9,7 @@ import (
 func Provider() terraform.ResourceProvider {
 	provider := &schema.Provider{
 		DataSourcesMap: map[string]*schema.Resource{
-			"cmdexec-execute": dataSourceCmdExecExecute(),
+			"cmdexec_execute": dataSourceCmdExecExecute(),
 		},
 	}
 	return provider

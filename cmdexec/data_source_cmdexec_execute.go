@@ -23,6 +23,10 @@ func dataSourceCmdExecExecute() *schema.Resource {
 				Optional: true,
 				Default:  60,
 			},
+			"rc": {
+				Type:     schema.TypeInt,
+				Computed: true,
+			},
 			"output": {
 				Type:     schema.TypeString,
 				Computed: true,
