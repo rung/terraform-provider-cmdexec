@@ -15,7 +15,7 @@ all: test reviewdog
 bootstrap-lint-tools:
 	@for tool in $(LINT_TOOLS) ; do \
 		echo "Installing $$tool" ; \
-		go install $$tool; \
+		go get -u $$tool; \
 	done
 
 .PHONY: fmtcheck
