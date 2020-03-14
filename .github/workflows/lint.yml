@@ -19,10 +19,14 @@ jobs:
       - name: fmtcheck
         run: |
           make fmtcheck
-      - name: Run reviewdog
+      - name: Setup reviewdog
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           make bootstrap-lint-tools
           echo ::add-path::$(go env GOPATH)/bin
+      - name: Run reviewdog
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
           reviewdog -reporter=github-pr-check
