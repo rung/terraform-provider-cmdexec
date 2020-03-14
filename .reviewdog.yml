@@ -1,0 +1,18 @@
+# reviewdog.yml
+
+runner:
+  golint:
+    cmd: golint $(go list ./...)
+    format: golint
+
+  staticcheck:
+    cmd: staticcheck $(go list ./...)
+    errorformat:
+      - "%f:%l:%c: %m"
+
+  # Go Security Checker https://github.com/securego/gosec
+  # exclude G104(Audit errors not checked) because other lint tools check it too.
+  gosec:
+    cmd: gosec -quiet -exclude=G104,G204 -fmt=golint ./...
+    format: golint
+
