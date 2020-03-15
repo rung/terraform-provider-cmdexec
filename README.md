@@ -11,6 +11,7 @@ Requirements
 ------------
 
 - [Terraform](https://www.terraform.io/downloads.html)
+- /bin/sh
 - [Go](https://golang.org/doc/install) (to build the provider plugin)
 
 
