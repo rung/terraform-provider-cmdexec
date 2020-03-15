@@ -39,7 +39,7 @@ resource "cmdexec_output" "sample" {
 }
 ```
 
-To build the provider for Linux, please run `make build-linux`
+To build the provider for Linux(x64), please run `make build-linux`
 ```sh
 make build-linux
 ```
