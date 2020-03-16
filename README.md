@@ -11,11 +11,11 @@ Requirements
 ------------
 
 - [Terraform](https://www.terraform.io/downloads.html)
-- /bin/sh
+- `/bin/sh`
 - [Go](https://golang.org/doc/install) (to build the provider plugin)
 
 
-Examples
+How to use
 ---------------------
 
 To install the provider, please run `make install`.
